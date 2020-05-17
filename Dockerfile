@@ -14,7 +14,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apk update \
     && apk add gcc python3-dev musl-dev \
-    && apk add supervisor nginx
+    && apk add supervisor nginx mysql mariadb-dev
 
 # Supervisord folders
 RUN mkdir -p /var/log/supervisor/; \
