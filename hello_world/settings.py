@@ -9,7 +9,7 @@ DEBUG = False if ENV == 'production' else True
 base_settings = [
     os.path.join('environment', '{0}.py'.format(ENV)),
     os.path.join('components', '*.py'),
-    
+
     # for any local settings
     optional('local_settings.py')
 ]

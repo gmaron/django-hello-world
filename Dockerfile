@@ -31,6 +31,7 @@ RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
     && pip install gunicorn
 
+
 # Copy necessary configurations files
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY docker/gunicorn_start.sh ${APP_HOME}/gunicorn_start.sh
@@ -38,5 +39,7 @@ COPY docker/supervisord.conf ${APP_HOME}/supervisord.conf
 
 # Copy project
 COPY . ${APP_HOME}
+
+RUN python manage.py collectstatic
 
 ENTRYPOINT [ "supervisord", "-n", "-c", "/home/app/web/supervisord.conf" ]
